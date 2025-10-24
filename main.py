@@ -47,7 +47,7 @@ def main():
                 break
             for bullet in shots:
                 if object.isCollide(bullet):
-                    object.kill()
+                    object.split()
                     bullet.kill()
 
         screen.fill("Black")
