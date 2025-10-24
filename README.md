@@ -2,8 +2,6 @@
 
 A classic arcade-style asteroids game built with Python and the Pygame library. This project was developed as part of the Boot.dev curriculum, focusing on object-oriented programming, game loop mechanics, and vector math.
 
-(You should replace the placeholder above with a real screenshot or GIF of your game)
-
 ## Features
 
 * **OOP Design:** All game entities (Player, Asteroid, Shot) are encapsulated classes.
