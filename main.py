@@ -32,6 +32,17 @@ def main():
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     asteroids_field = AsteroidField()
 
+    score = 0
+
+    try:
+        font = pygame.font.Font(None, 36) # Pygame's default font
+    except pygame.error:
+        print("Warning: Could not load default font.")
+        font = None
+
+    GAME_STATE_PLAYING = "playing"
+    GAME_STATE_OVER = "game_over"
+    state = GAME_STATE_PLAYING # Start the game in the playing state
 
     while running:
         for event in pygame.event.get():
@@ -40,20 +51,27 @@ def main():
             
         updatable.update(dt)
 
-        for object in asteroids:
-            if object.isCollide(player):
+        for asteroid in asteroids:
+            if asteroid.isCollide(player):
                 print("Game over!")
                 running = False
                 break
             for bullet in shots:
-                if object.isCollide(bullet):
-                    object.split()
+                if asteroid.isCollide(bullet):
+                    score += asteroid.get_score()
+                    asteroid.split()
                     bullet.kill()
+                    break
 
         screen.fill("Black")
 
         for entity in drawable:
             entity.draw(screen)
+
+        if font:
+            text_surface = font.render(f"Score: {score}", True, "white")
+            # Draw it in the top left corner
+            screen.blit(text_surface, (10, 10))
 
         pygame.display.flip()
         dt = clock.tick(60) / 1000
