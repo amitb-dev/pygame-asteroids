@@ -45,6 +45,10 @@ def main():
                 print("Game over!")
                 running = False
                 break
+            for bullet in shots:
+                if object.isCollide(bullet):
+                    object.kill()
+                    bullet.kill()
 
         screen.fill("Black")
 
