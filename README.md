@@ -40,7 +40,6 @@ source .venv/bin/activate
 (On Windows, use `.venv\Scripts\activate`)
 
 3. **Install dependencies:**
-(This uses the requirements.txt file you just created.)
 ```bash
 python3 -m pip install -r requirements.txt
 ```
